@@ -1,6 +1,4 @@
-import { CreateRequestMainComponent } from "@/components/CreateRequestMainComponent";
+import {CreateRequestMainComponent} from "@/components/CreateRequestMainComponent";
 export default function Home() {
-  return (
-    <CreateRequestMainComponent />
-  );
+  return <CreateRequestMainComponent />;
 }

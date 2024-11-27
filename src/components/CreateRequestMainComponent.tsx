@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import { Modal, Button, TextInput } from "flowbite-react";
-import { HiPlus, HiX } from "react-icons/hi";
+import {Button, Modal, TextInput} from "flowbite-react";
+import {HiPlus, HiX} from "react-icons/hi";
+import React, {useState} from "react";
 
-interface CreateRequestMainComponentProps {
-}
-export function CreateRequestMainComponent(
-  props: CreateRequestMainComponentProps
-) {
+interface CreateRequestMainComponentProps {}
+export function CreateRequestMainComponent(props: CreateRequestMainComponentProps) {
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between p-2 border-b rounded-t">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-extrabold">
           Create New Request
         </h3>
-        <button
-          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-        >
+        <button className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
           <HiX className="w-5 h-5" />
         </button>
       </div>
