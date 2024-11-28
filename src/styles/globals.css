@@ -5,7 +5,3 @@
 html, body, #__next, main {
   @apply h-full;
 }
-
-body {
-  @apply bg-black
-}
