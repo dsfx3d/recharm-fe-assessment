@@ -49,6 +49,9 @@ export function CreateRequestMainComponent({
               <ATrashButton
                 data-index={index}
                 disabled={length === 1}
+                className={
+                  toError(index)?.length ? "text-inherit" : "text-[#858992]"
+                }
                 onClick={removeUrl}
               />
             </MTextField>
