@@ -4,7 +4,7 @@ import {Inter} from "next/font/google";
 
 const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 });
 
