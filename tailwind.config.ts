@@ -14,9 +14,13 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      lineHeight: {
+        4.5: "1.125rem",
+      },
+      spacing: {
+        0.25: "0.0625rem",
+        10.5: "2.625rem",
+        168: "42rem",
       },
     },
   },
