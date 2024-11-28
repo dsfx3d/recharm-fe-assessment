@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import type {AppProps} from "next/app";
 import {Inter} from "next/font/google";
+import type {AppProps} from "next/app";
 
 const sans = Inter({
   subsets: ["latin"],

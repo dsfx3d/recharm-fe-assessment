@@ -1,7 +1,7 @@
-import {cva} from "class-variance-authority";
 import {Button} from "flowbite-react";
-import React, {ComponentProps} from "react";
 import {HiPlus} from "react-icons/hi";
+import {cva} from "class-variance-authority";
+import React, {ComponentProps} from "react";
 
 type Variant = "primary" | "light";
 type TProps = ComponentProps<typeof Button> & {
