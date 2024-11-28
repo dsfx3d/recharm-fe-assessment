@@ -13,8 +13,6 @@ const meta = {
     className: "border",
     onSubmit: e => {
       e.preventDefault();
-      console.log("here");
-
       fn()(e);
     },
   },
