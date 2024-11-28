@@ -16,7 +16,6 @@ export function useKeepScrollAtBottom(element?: HTMLElement | null) {
   }, [element]);
 
   useEffect(() => {
-    // setTimeout to defer the scroll to the next tick
     const scroll = () => setTimeout(() => scrollToBottom(element));
     window.addEventListener("resize", scroll);
     return () => window.removeEventListener("resize", scroll);

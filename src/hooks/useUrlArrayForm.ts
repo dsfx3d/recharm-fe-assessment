@@ -1,16 +1,7 @@
+import {UrlArraySchema} from "@/lib/schemas/UrlArrayschema";
 import {useCallback} from "react";
 import {useFieldArray, useForm} from "react-hook-form";
-import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-
-const UrlArraySchema = z.object({
-  urls: z.array(
-    z.object({
-      url: z.string().url("Enter a valid URL"),
-    }),
-  ),
-});
-type UrlArraySchema = z.infer<typeof UrlArraySchema>;
 
 type Opts = {
   maxUrls: number;
@@ -52,9 +43,9 @@ export function useUrlArrayForm({maxUrls, initialUrls}: Opts) {
   return {fields, register, submit, toError, append, remove};
 }
 
-export const toSolution = (URLSearchParams: UrlArraySchema["urls"]) => {
+const toSolution = (urls: UrlArraySchema["urls"]) => {
   return JSON.stringify(
-    URLSearchParams.map(({url}) => ({
+    urls.map(({url}) => ({
       url,
       value: new URL(url).pathname.slice(1),
     })),

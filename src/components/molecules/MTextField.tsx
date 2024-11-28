@@ -1,7 +1,7 @@
 import {Label} from "flowbite-react";
 import {cn} from "@/lib/cn";
 import {cva} from "class-variance-authority";
-import React, {ComponentProps, useMemo} from "react";
+import React, {ComponentProps} from "react";
 
 type TVariant = "default" | "failure";
 
@@ -15,10 +15,9 @@ export default React.forwardRef(function MTextField(
   {id, children, className, error, label, ...props}: TProps,
   forwardedRef: React.Ref<HTMLInputElement>,
 ) {
-  const variants = useMemo<Record<string, string>>(
-    () => ({variant: error ? "failure" : "default"}),
-    [error],
-  );
+  const variants: Record<string, TVariant> = {
+    variant: error ? "failure" : "default",
+  };
   return (
     <div className={className}>
       <div className="h-[71px] flex flex-col gap-2 mb-2">
