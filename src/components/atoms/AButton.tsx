@@ -24,13 +24,14 @@ export default function AButton({children, variant, ...props}: TProps) {
 
 const iconVariant: Record<Variant, string> = {
   primary: "",
-  light: "text-white bg-purple-800 rounded-full",
+  light: "text-white bg-purple-800",
 };
 const toIcon = cva([], {variants: {variant: iconVariant}});
 
 const buttonVariant: Record<Variant, string> = {
-  primary: "text-white font-medium bg-purple-700 hover:bg-purple-800",
-  light: "bg-white hover:bg-gray-50 hover:text-purple-800 border-gray-300",
+  primary: "text-white font-medium bg-purple-700 hover:bg-purple-800 ",
+  light:
+    "bg-white hover:bg-gray-50 hover:text-purple-800 border-gray-300 focus:ring-purple-500",
 };
 const buttonBase = "border border-gray-300 box-border px-[3px] py-0.25";
 const toButton = cva([buttonBase], {variants: {variant: buttonVariant}});
