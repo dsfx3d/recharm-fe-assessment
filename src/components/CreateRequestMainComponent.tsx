@@ -4,7 +4,7 @@ import AButton from "./atoms/AButton";
 import ATrashButton from "./atoms/ATrashButton";
 import FormModal from "./organisms/FormModal";
 import MTextField from "./molecules/MTextField";
-import React, {useCallback, useRef} from "react";
+import React, {ComponentProps, useCallback, useRef} from "react";
 
 type TProps = Partial<Parameters<typeof useUrlArrayForm>[0]>;
 
@@ -19,11 +19,6 @@ export function CreateRequestMainComponent({
     initialUrls,
     maxUrls,
   });
-
-  const removeUrl = useCallback<React.MouseEventHandler<HTMLDivElement>>(
-    event => remove(Number(event.currentTarget.dataset.index)),
-    [remove],
-  );
 
   return (
     <FormModal
@@ -46,13 +41,13 @@ export function CreateRequestMainComponent({
               label={`Video/Folder URL ${index + 1}`}
               autoComplete="off"
             >
-              <ATrashButton
-                data-index={index}
+              <DeleteButton
+                index={index}
                 disabled={length === 1}
                 className={
                   toError(index)?.length ? "text-inherit" : "text-[#858992]"
                 }
-                onClick={removeUrl}
+                onClick={remove}
               />
             </MTextField>
           ))}
@@ -64,6 +59,24 @@ export function CreateRequestMainComponent({
       </div>
     </FormModal>
   );
+}
+
+function DeleteButton({
+  index,
+  onClick,
+  ...props
+}: Omit<ComponentProps<typeof ATrashButton>, "onClick"> & {
+  index: number;
+  onClick: (index: number) => void;
+}) {
+  const click = useCallback<React.MouseEventHandler<HTMLDivElement>>(
+    event => {
+      event.stopPropagation();
+      onClick(index);
+    },
+    [onClick, index],
+  );
+  return <ATrashButton {...props} onClick={click} />;
 }
 
 function FormHead() {
