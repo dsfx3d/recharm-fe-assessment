@@ -1,3 +1,4 @@
+import {toSolution} from "@/lib/toSolution";
 import {useKeepScrollAtBottom} from "@/hooks/useKeepScrollAtBottom";
 import {useUrlArrayForm} from "@/hooks/useUrlArrayForm";
 import AButton from "./atoms/AButton";
@@ -15,14 +16,23 @@ export function CreateRequestMainComponent({
   const $scrollContainer = useRef<HTMLDivElement>(null);
   useKeepScrollAtBottom($scrollContainer.current);
 
-  const {fields, register, submit, toError, append, remove} = useUrlArrayForm({
-    initialUrls,
-    maxUrls,
-  });
+  const {fields, register, handleSubmit, toError, append, remove} =
+    useUrlArrayForm({
+      initialUrls,
+      maxUrls,
+    });
+
+  const showAlert = useCallback(
+    (event?: React.BaseSyntheticEvent) => {
+      const submit = handleSubmit(payload => alert(toSolution(payload)));
+      submit(event);
+    },
+    [handleSubmit],
+  );
 
   return (
     <FormModal
-      onSubmit={submit}
+      onSubmit={showAlert}
       className="flex flex-col h-full bg-white rounded-t-lg"
     >
       <div

@@ -1,4 +1,4 @@
-import {UrlArraySchema} from "@/lib/schemas/UrlArrayschema";
+import {UrlArraySchema} from "@/lib/schemas/UrlArraySchema";
 import {useCallback} from "react";
 import {useFieldArray, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -25,29 +25,19 @@ export function useUrlArrayForm({maxUrls, initialUrls}: Opts) {
   } = useFieldArray({control, name: "urls"});
 
   const register = useCallback(
-    (index: number) => ({
-      ...registerControl(`urls.${index}.url`),
-    }),
+    (index: number) => registerControl(`urls.${index}.url`),
     [registerControl],
   );
-  const append = useCallback(
-    () => fields.length < maxUrls && appendUrl({url: ""}),
-    [appendUrl, fields.length, maxUrls],
-  );
-  const toError = (index: number) => errors.urls?.[index]?.url?.message;
-  const submit = useCallback(
-    (e?: React.BaseSyntheticEvent) =>
-      handleSubmit(({urls}) => alert(JSON.stringify(toSolution(urls))))(e),
-    [handleSubmit],
-  );
-  return {fields, register, submit, toError, append, remove};
-}
+  const append = useCallback(() => {
+    if (fields.length < maxUrls) {
+      appendUrl({url: ""});
+    }
+  }, [appendUrl, fields.length, maxUrls]);
 
-const toSolution = (urls: UrlArraySchema["urls"]) => {
-  return JSON.stringify(
-    urls.map(({url}) => ({
-      url,
-      value: new URL(url).pathname.slice(1),
-    })),
-  );
-};
+  const toError = (index: number) => {
+    if (errors.urls?.[index]?.url?.message) {
+      return "Enter a valid URL";
+    }
+  };
+  return {fields, register, handleSubmit, toError, append, remove};
+}

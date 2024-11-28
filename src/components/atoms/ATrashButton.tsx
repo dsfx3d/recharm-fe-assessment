@@ -7,18 +7,17 @@ type TProps = ComponentProps<"div"> & {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
-export default function ATrashButton({
-  className,
-  disabled,
-  onClick,
-  ...props
-}: TProps) {
+export default function ATrashButton({disabled, onClick, ...props}: TProps) {
   const handleClick = useCallback<React.MouseEventHandler<HTMLDivElement>>(
-    event => !disabled && onClick?.(event),
+    event => {
+      if (!disabled) {
+        onClick?.(event);
+      }
+    },
     [onClick, disabled],
   );
   return (
-    <div {...props} className={className} onClick={handleClick}>
+    <div {...props} onClick={handleClick}>
       <HiTrash
         className={cn(
           "h-4 w-4 cursor-pointer",

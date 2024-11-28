@@ -1,5 +1,6 @@
 import {Button} from "flowbite-react";
 import {HiPlus} from "react-icons/hi";
+import {cn} from "@/lib/cn";
 import {cva} from "class-variance-authority";
 import React, {ComponentProps} from "react";
 
@@ -7,9 +8,18 @@ type Variant = "primary" | "light";
 type TProps = ComponentProps<typeof Button> & {
   variant: Variant;
 };
-export default function AButton({children, variant, ...props}: TProps) {
+export default function AButton({
+  children,
+  className,
+  variant,
+  ...props
+}: TProps) {
   return (
-    <Button color={variant} className={toButton({variant})} {...props}>
+    <Button
+      color={variant}
+      className={cn(className, toButton({variant}))}
+      {...props}
+    >
       <span className="inline-flex justify-start items-center gap-[0.549rem] text-sm font-medium leading-[21px]">
         <HiPlus className={toIcon({variant})} />
         {children}
