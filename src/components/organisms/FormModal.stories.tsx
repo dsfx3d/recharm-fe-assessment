@@ -1,5 +1,6 @@
 import {fn} from "@storybook/test";
 import FormModal from "./FormModal";
+import Image from "next/image";
 import type {Meta, StoryObj} from "@storybook/react";
 
 const meta = {
@@ -26,7 +27,7 @@ export const Default: Story = {
   args: {
     children: (
       <div className="flex w-full flex-grow justify-center items-center">
-        <img src="https://i.redd.it/tgvx1qs66d3e1.png" alt="meme" />
+        <Image src="https://i.redd.it/tgvx1qs66d3e1.png" alt="meme" />
       </div>
     ),
   },
