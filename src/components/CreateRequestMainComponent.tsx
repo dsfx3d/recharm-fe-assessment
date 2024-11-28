@@ -71,6 +71,7 @@ function DeleteButton({
 }) {
   const click = useCallback<React.MouseEventHandler<HTMLDivElement>>(
     event => {
+      event.preventDefault();
       event.stopPropagation();
       onClick(index);
     },
