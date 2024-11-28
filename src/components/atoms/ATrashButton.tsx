@@ -21,7 +21,7 @@ export default function ATrashButton({
     <div {...props} className={className} onClick={handleClick}>
       <HiTrash
         className={cn(
-          "h-4 w-4 cursor-pointer",
+          "h-4 w-4 cursor-pointer text-[#858992]",
           disabled && "opacity-30 cursor-text",
         )}
       />
