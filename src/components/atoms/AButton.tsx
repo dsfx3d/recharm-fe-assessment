@@ -1,17 +1,21 @@
 import {Button} from "flowbite-react";
 import {HiPlus} from "react-icons/hi";
 import {cva} from "class-variance-authority";
-import React, {ComponentProps} from "react";
+import React, {ComponentProps, useMemo} from "react";
 
 type Variant = "primary" | "light";
 type TProps = ComponentProps<typeof Button> & {
   variant: Variant;
 };
 export default function AButton({children, variant, ...props}: TProps) {
+  const variants = useMemo<Record<string, string>>(
+    () => ({variant}),
+    [variant],
+  );
   return (
-    <Button color={variant} className={toButton({variant})} {...props}>
+    <Button color={variant} className={toButton(variants)} {...props}>
       <span className="inline-flex justify-start items-center gap-[0.549rem] text-sm font-medium leading-[21px]">
-        <HiPlus className={toIcon({variant})} />
+        <HiPlus className={toIcon(variants)} />
         {children}
       </span>
     </Button>
