@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "flowbite-react": "^0.10.1",
     "next": "14.2.12",
     "prettier": "^3.3.3",
