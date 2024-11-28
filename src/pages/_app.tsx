@@ -1,6 +1,17 @@
 import "@/styles/globals.css";
 import type {AppProps} from "next/app";
+import {Inter} from "next/font/google";
+
+const sans = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-sans",
+});
 
 export default function App({Component, pageProps}: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <main className={`${sans.variable} font-sans`}>
+      <Component {...pageProps} />
+    </main>
+  );
 }
