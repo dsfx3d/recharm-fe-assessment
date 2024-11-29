@@ -1,9 +1,9 @@
+import {HiX} from "react-icons/hi";
 import {toSolution} from "@/lib/toSolution";
 import {useKeepScrollAtBottom} from "@/hooks/useKeepScrollAtBottom";
 import {useUrlArrayForm} from "@/hooks/useUrlArrayForm";
 import AButton from "./atoms/AButton";
 import ATrashButton from "./atoms/ATrashButton";
-import FormModal from "./organisms/FormModal";
 import MTextField from "./molecules/MTextField";
 import React, {ComponentProps, useCallback, useRef} from "react";
 
@@ -22,25 +22,15 @@ export function CreateRequestMainComponent({
       maxUrls,
     });
 
-  const showAlert = useCallback(
-    (event?: React.BaseSyntheticEvent) => {
-      const submit = handleSubmit(payload => alert(toSolution(payload)));
-      submit(event);
-    },
-    [handleSubmit],
-  );
-
   return (
-    <FormModal
-      onSubmit={showAlert}
+    <form
+      onSubmit={handleSubmit(payload => alert(toSolution(payload)))}
       className="flex flex-col h-full bg-white rounded-t-lg"
     >
-      <div
-        ref={$scrollContainer}
-        className="flex-grow flex w-full overflow-y-auto"
-      >
+      <FormHead />
+      <div ref={$scrollContainer} className="flex-grow w-full overflow-y-auto">
         <div className="max-w-168 w-full box-content mx-auto space-y-6 p-6 py-8">
-          <FormHead />
+          <FormHero />
           {fields.map((_, index, {length}) => (
             <MTextField
               {...register(index)}
@@ -67,7 +57,8 @@ export function CreateRequestMainComponent({
           <div className="min-h-8">&nbsp;</div>
         </div>
       </div>
-    </FormModal>
+      <FormFooter />
+    </form>
   );
 }
 
@@ -90,7 +81,7 @@ function DeleteButton({
   return <ATrashButton {...props} onClick={click} />;
 }
 
-function FormHead() {
+const FormHero = React.memo(function FormHero() {
   const subtitle =
     "These videos would be cut, labeled and made available in your Recharm video library";
   return (
@@ -101,4 +92,30 @@ function FormHead() {
       </p>
     </div>
   );
-}
+});
+
+const FormHead = React.memo(function FormHead() {
+  return (
+    <div className="flex items-center justify-between p-6 pr-4 border-b rounded-t">
+      <h3 className="text-lg leading-[27px] font-semibold">
+        Create New Request
+      </h3>
+      <button
+        type="button"
+        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-0 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <HiX className="w-5 h-5" />
+      </button>
+    </div>
+  );
+});
+
+const FormFooter = React.memo(function FormFooter() {
+  return (
+    <div className="sticky bottom-0 flex items-center justify-end p-4 border-t border-gray-200 rounded-b">
+      <AButton type="submit" variant="primary">
+        Create Request
+      </AButton>
+    </div>
+  );
+});

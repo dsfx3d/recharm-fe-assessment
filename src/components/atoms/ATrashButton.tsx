@@ -1,4 +1,4 @@
-import {ComponentProps, useCallback} from "react";
+import {ComponentProps} from "react";
 import {HiTrash} from "react-icons/hi";
 import {cn} from "@/lib/cn";
 
@@ -8,16 +8,15 @@ type TProps = ComponentProps<"div"> & {
 };
 
 export default function ATrashButton({disabled, onClick, ...props}: TProps) {
-  const handleClick = useCallback<React.MouseEventHandler<HTMLDivElement>>(
-    event => {
-      if (!disabled) {
-        onClick?.(event);
-      }
-    },
-    [onClick, disabled],
-  );
   return (
-    <div {...props} onClick={handleClick}>
+    <div
+      {...props}
+      onClick={event => {
+        if (!disabled) {
+          onClick?.(event);
+        }
+      }}
+    >
       <HiTrash
         className={cn(
           "h-4 w-4 cursor-pointer",
