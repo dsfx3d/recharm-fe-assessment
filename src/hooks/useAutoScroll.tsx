@@ -7,7 +7,7 @@ export function useAutoScroll(element?: HTMLElement | null) {
       const isInputAdded = mutations
         .flatMap(record => record.addedNodes)
         // eslint-disable-next-line unicorn/prefer-spread
-        .flatMap(node => Array.from(node))
+        .flatMap(nodeList => Array.from(nodeList))
         .filter<HTMLElement>(node => node instanceof HTMLElement)
         .some(node => node.querySelector("input"));
 
