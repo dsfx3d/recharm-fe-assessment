@@ -6,5 +6,7 @@ export const toSolution = (payload: UrlArraySchema): string => {
     url,
     value: new URL(url).pathname.slice(1),
   }));
-  return JSON.stringify(SolutionSchema.safeParse(solution));
+  const result = SolutionSchema.safeParse(solution);
+
+  return JSON.stringify(result.data);
 };
