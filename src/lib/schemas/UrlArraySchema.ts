@@ -6,7 +6,9 @@ export const UrlArraySchema = z.object({
       url: z
         .string()
         .url()
-        .refine(value => value.startsWith("https://drive.google.com/"))
+        .refine(value =>
+          value.toLowerCase().startsWith("https://drive.google.com/"),
+        )
         .refine(value => {
           try {
             const url = new URL(value);
