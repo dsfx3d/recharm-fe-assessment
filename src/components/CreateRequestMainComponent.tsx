@@ -38,6 +38,7 @@ export function CreateRequestMainComponent({
             <UrlField
               key={index}
               {...register(index)}
+              animated={index > 0}
               error={toError(index)}
               id={`url-${index}`}
               placeholder="eg. https://drive.google.com/some-video"
