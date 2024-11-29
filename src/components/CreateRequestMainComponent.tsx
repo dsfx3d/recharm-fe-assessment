@@ -28,7 +28,10 @@ export function CreateRequestMainComponent({
       className="flex flex-col h-full bg-white rounded-t-lg"
     >
       <FormHead />
-      <div ref={$scrollContainer} className="flex-grow w-full overflow-y-auto">
+      <div
+        ref={$scrollContainer}
+        className="flex-grow flex w-full overflow-y-auto"
+      >
         <div className="max-w-168 w-full box-content mx-auto space-y-6 p-6 py-8">
           <FormHero />
           {fields.map((_, index, {length}) => (
