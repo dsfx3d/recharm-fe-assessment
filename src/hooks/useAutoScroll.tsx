@@ -1,23 +1,18 @@
 import {scrollToBottom} from "@/lib/scrollToBottom";
 import {useEffect} from "react";
 
-export function useKeepScrollAtBottom(element?: HTMLElement | null) {
+export function useAutoScroll(element?: HTMLElement | null) {
   useEffect(() => {
     const observer = new MutationObserver(mutations => {
       const isNodeAdded = mutations.some(record => record.addedNodes.length);
       if (isNodeAdded) {
-        scrollToBottom(element);
+        // defer the scroll to the next frame
+        setTimeout(() => scrollToBottom(element), 50);
       }
     });
     if (element) {
       observer.observe(element, {childList: true, subtree: true});
     }
     return () => observer.disconnect();
-  }, [element]);
-
-  useEffect(() => {
-    const scroll = () => setTimeout(() => scrollToBottom(element));
-    window.addEventListener("resize", scroll);
-    return () => window.removeEventListener("resize", scroll);
   }, [element]);
 }

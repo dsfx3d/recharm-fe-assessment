@@ -1,6 +1,6 @@
 import {HiX} from "react-icons/hi";
 import {toSolution} from "@/lib/toSolution";
-import {useKeepScrollAtBottom} from "@/hooks/useKeepScrollAtBottom";
+import {useAutoScroll} from "@/hooks/useAutoScroll";
 import {useUrlArrayForm} from "@/hooks/useUrlArrayForm";
 import AButton from "./atoms/AButton";
 import ATrashButton from "./atoms/ATrashButton";
@@ -14,7 +14,7 @@ export function CreateRequestMainComponent({
   maxUrls = 10,
 }: TProps) {
   const $scrollContainer = useRef<HTMLDivElement>(null);
-  useKeepScrollAtBottom($scrollContainer.current);
+  useAutoScroll($scrollContainer.current);
 
   const {fields, register, handleSubmit, toError, append, remove} =
     useUrlArrayForm({
