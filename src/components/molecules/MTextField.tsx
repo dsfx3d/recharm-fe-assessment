@@ -34,7 +34,7 @@ export default React.forwardRef(function MTextField(
             className={toInput(variants)}
             {...props}
           />
-          <span className="opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 transition-opacity">
+          <span className="opacity-0 group-focus-within:opacity-100 group-hover:opacity-100">
             {children}
           </span>
         </label>
