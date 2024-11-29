@@ -15,23 +15,24 @@ export default React.forwardRef(function MTextField(
   {id, children, className, error, label, ...props}: TProps,
   forwardedRef: React.Ref<HTMLInputElement>,
 ) {
-  const variants: Record<string, TVariant> = {
-    variant: error ? "failure" : "default",
-  };
+  const variant: TVariant = error ? "failure" : "default";
   return (
     <div className={className}>
       <div className="h-[71px] flex flex-col gap-2 mb-2">
         <Label
           htmlFor={id}
           value={label}
-          color={variants.variant}
+          color={variant}
           className="text-sm font-medium leading-[21px]"
         />
-        <label htmlFor={id} className={cn(toInputContainer(variants), "group")}>
+        <label
+          htmlFor={id}
+          className={cn(toInputContainer({variant}), "group")}
+        >
           <input
             ref={forwardedRef}
             id={id}
-            className={toInput(variants)}
+            className={toInput({variant})}
             {...props}
           />
           <span className="opacity-0 group-focus-within:opacity-100 group-hover:opacity-100">
