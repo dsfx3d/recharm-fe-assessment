@@ -2,7 +2,9 @@ import {motion} from "motion/react";
 import MTextField from "../molecules/MTextField";
 import React, {ComponentProps} from "react";
 
-type TProps = ComponentProps<typeof MTextField>;
+type TProps = ComponentProps<typeof MTextField> & {
+  animated: boolean;
+};
 
 const initial: ComponentProps<typeof motion.div>["initial"] = {
   opacity: 0,
@@ -14,14 +16,21 @@ const animate: ComponentProps<typeof motion.div>["animate"] = {
 };
 
 export default React.forwardRef(function UrlField(
-  {children, ...props}: TProps,
+  {animated, children, ...props}: TProps,
   ref: React.Ref<HTMLInputElement>,
 ) {
+  if (animated) {
+    return (
+      <motion.div initial={initial} animate={animate}>
+        <MTextField {...props} ref={ref}>
+          {children}
+        </MTextField>
+      </motion.div>
+    );
+  }
   return (
-    <motion.div initial={initial} animate={animate}>
-      <MTextField {...props} ref={ref}>
-        {children}
-      </MTextField>
-    </motion.div>
+    <MTextField {...props} ref={ref}>
+      {children}
+    </MTextField>
   );
 });
