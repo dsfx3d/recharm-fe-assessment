@@ -4,8 +4,8 @@ import {useAutoScroll} from "@/hooks/useAutoScroll";
 import {useUrlArrayForm} from "@/hooks/useUrlArrayForm";
 import AButton from "./atoms/AButton";
 import ATrashButton from "./atoms/ATrashButton";
-import MTextField from "./molecules/MTextField";
 import React, {ComponentProps, useCallback, useRef} from "react";
+import UrlField from "./organism/UrlField";
 
 type TProps = Partial<Parameters<typeof useUrlArrayForm>[0]>;
 
@@ -35,10 +35,10 @@ export function CreateRequestMainComponent({
         <div className="max-w-168 w-full box-content mx-auto space-y-6 p-6 py-8">
           <FormHero />
           {fields.map((_, index, {length}) => (
-            <MTextField
+            <UrlField
+              key={index}
               {...register(index)}
               error={toError(index)}
-              key={index}
               id={`url-${index}`}
               placeholder="eg. https://drive.google.com/some-video"
               label={`Video/Folder URL ${index + 1}`}
@@ -52,7 +52,7 @@ export function CreateRequestMainComponent({
                 }
                 onClick={remove}
               />
-            </MTextField>
+            </UrlField>
           ))}
           <AButton variant="light" onClick={append}>
             Add URL
@@ -64,7 +64,6 @@ export function CreateRequestMainComponent({
     </form>
   );
 }
-
 function DeleteButton({
   index,
   onClick,
