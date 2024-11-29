@@ -30,7 +30,7 @@ export default function AButton({
 
 const iconVariant: Record<Variant, string> = {
   primary: "",
-  light: "text-white bg-purple-800",
+  light: "text-white bg-purple-800 rounded-full",
 };
 const toIcon = cva([], {variants: {variant: iconVariant}});
 
