@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <title>Create New Request</title>
       </Head>
-      <CreateRequestMainComponent />;
+      <CreateRequestMainComponent />
     </>
   );
 }
