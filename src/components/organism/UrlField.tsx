@@ -20,7 +20,7 @@ export default React.forwardRef(function UrlField(
   ref: React.Ref<HTMLInputElement>,
 ) {
   const slotted = (
-    <span className="opacity-0 touch:opacity-100 group-focus-within:opacity-100 group-hover:opacity-100">
+    <span className="opacity-0 touch:opacity-100 group-hover:opacity-100">
       {children}
     </span>
   );
@@ -28,9 +28,7 @@ export default React.forwardRef(function UrlField(
     return (
       <motion.div initial={initial} animate={animate}>
         <MTextField {...props} ref={ref}>
-          <span className="opacity-0 touch:opacity-100 group-focus-within:opacity-100 group-hover:opacity-100">
-            {slotted}
-          </span>
+          {slotted}
         </MTextField>
       </motion.div>
     );
