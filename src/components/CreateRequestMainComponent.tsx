@@ -55,9 +55,14 @@ export function CreateRequestMainComponent({
               />
             </UrlField>
           ))}
-          <AButton variant="light" onClick={append}>
-            Add URL
-          </AButton>
+          <div className="flex w-full items-center justify-between">
+            <AButton variant="light" onClick={append}>
+              Add URL
+            </AButton>
+            <small className="px-1">
+              {fields.length}/{maxUrls}
+            </small>
+          </div>
           <div className="min-h-8">&nbsp;</div>
         </div>
       </div>
