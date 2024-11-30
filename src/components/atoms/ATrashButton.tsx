@@ -16,6 +16,7 @@ export default function ATrashButton({disabled, onClick, ...props}: TProps) {
           onClick?.(event);
         }
       }}
+      role="button"
     >
       <HiTrash
         className={cn(
