@@ -59,7 +59,7 @@ export function CreateRequestMainComponent({
             <AButton variant="light" onClick={append}>
               Add URL
             </AButton>
-            <small className="px-1">
+            <small className="px-1 leading-tight">
               {fields.length}/{maxUrls}
             </small>
           </div>
