@@ -35,9 +35,7 @@ export default React.forwardRef(function MTextField(
             className={toInput({variant})}
             {...props}
           />
-          <span className="opacity-0 group-focus-within:opacity-100 group-hover:opacity-100">
-            {children}
-          </span>
+          {children}
         </label>
       </div>
       <div className="text-sm leading-tight text-red-600">{error}</div>

@@ -22,6 +22,9 @@ const config: Config = {
         10.5: "2.625rem",
         168: "42rem",
       },
+      screens: {
+        touch: {raw: "(pointer: coarse)"},
+      },
     },
   },
   plugins: [flowbite.plugin()],
