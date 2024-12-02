@@ -1,4 +1,4 @@
-import {HiX} from "react-icons/hi";
+import {HiPlus, HiX} from "react-icons/hi";
 import {toSolution} from "@/lib/toSolution";
 import {useAutoScroll} from "@/hooks/useAutoScroll";
 import {useUrlArrayForm} from "@/hooks/useUrlArrayForm";
@@ -57,6 +57,7 @@ export function CreateRequestMainComponent({
           ))}
           <div className="flex w-full items-center justify-between">
             <AButton variant="light" onClick={append}>
+              <HiPlus className="text-white bg-purple-800 rounded-full" />
               Add URL
             </AButton>
             <small className="px-1 leading-tight">
@@ -122,6 +123,7 @@ const FormFooter = React.memo(function FormFooter() {
   return (
     <div className="sticky bottom-0 flex items-center justify-end p-4 border-t border-gray-200 rounded-b">
       <AButton type="submit" variant="primary">
+        <HiPlus />
         Create Request
       </AButton>
     </div>
