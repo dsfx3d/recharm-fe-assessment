@@ -1,5 +1,4 @@
 import {Label} from "flowbite-react";
-import {cn} from "@/lib/cn";
 import {cva} from "class-variance-authority";
 import React, {ComponentProps} from "react";
 
@@ -25,10 +24,7 @@ export default React.forwardRef(function MTextField(
           color={variant}
           className="text-sm font-medium leading-[21px]"
         />
-        <label
-          htmlFor={id}
-          className={cn(toInputContainer({variant}), "group")}
-        >
+        <label htmlFor={id} className={toInputContainer({variant})}>
           <input
             ref={forwardedRef}
             id={id}
@@ -61,6 +57,7 @@ const inputVariant: Record<TVariant, string[]> = {
 
 const toInputContainer = cva(
   [
+    "group",
     "w-full h-10.5 flex gap-2.5 items-center",
     "border rounded-lg box-border",
     "px-4 py-3",
