@@ -36,7 +36,7 @@ export function useUrlArrayForm({maxUrls, initialUrls}: Opts) {
 
   const toError = (index: number) => {
     if (errors.urls?.[index]?.url?.message) {
-      return "Enter a valid URL";
+      return "Enter a Google Drive URL";
     }
   };
   return {fields, register, handleSubmit, toError, append, remove};
