@@ -18,6 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Responsive UI
 - Lazy form validation
+- Ability to add/delete URL fields.
+- Ensure there's always at least one URL field in the form.
 - Auto scroll on "Add URL"
 - Restrict URLs after 10 entries.
 
