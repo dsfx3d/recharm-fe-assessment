@@ -29,3 +29,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Quick animation on URL field entry to compliment smooth scrolling.
 - Show delete button only when hovering over field in pointer based displays.
 - Always show delete button on touch displays.
+- Allow deletion of any URL field when multiple are present, rather than always preventing deletion of the first URL field.
